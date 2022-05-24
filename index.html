@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Poppins:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Let's Adopt a Cat</title>
+  </head>
+  <body>
+    <header class="section">
+      <div class="content">
+        <nav>
+          <ul>
+            <li id="icon">
+              <img src="images/logo.png" alt="The catasatrophe logo" />
+            </li>
+            <li><a href="#hall-of-meows">Find a furriend</a></li>
+            <li><a href="#adopting">Adopt guide </a></li>
+          </ul>
+        </nav>
+        <h1>paws up to your new feline furriend!</h1>
+        <button>Adopt today</button>
+      </div>
+    </header>
+
+    <div id="objectives" class="section">
+      <h2>Only heroes— adopt.</h2>
+      <p>
+        <span class="bold">Not all heroes wear capes!</span> Saving the world is
+        a not a job that is only exclusive to comic heroes in new york city...
+        Now, you can do your part with one paw at a time.
+      </p>
+      <ul class="obj-container">
+        <li class="objectives">
+          <img src="images/graphic_01.png" alt="" />
+          <span>True companionship</span>
+          <p>
+            Opening your doors to your new furry friend brings a wholesome new
+            meaning to friendship.
+          </p>
+        </li>
+        <li class="objectives">
+          <img src="images/graphic_02.png" alt="" />
+          <span>Fullfilling role</span>
+          <p>
+            The major side effect of being there for your furry friend is
+            feeling very rewarded when they purr!
+          </p>
+        </li>
+        <li class="objectives">
+          <img src="images/graphic_03.png" alt="" />
+          <span>Loving community</span>
+          <p>
+            You will be part of a huge and growing community of adopters,
+            worldwide, to share your experiences!
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div id="hall-of-meows" class="section">
+      <div class="content">
+        <h2>Hall of meows.</h2>
+        <h4>Featured Felines of the week!</h4>
+        <div id="overlay">
+          <div class="border">
+            <button>x</button>
+            <img src="images/gallery_01.png" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="grid-item"><img src="images/gallery_01.png" /></div>
+          <div class="grid-item"><img src="images/gallery_02.png" /></div>
+          <div class="grid-item"><img src="images/gallery_03.png" /></div>
+          <div class="grid-item"><img src="images/gallery_04.png" /></div>
+          <div class="grid-item"><img src="images/gallery_05.png" /></div>
+          <div class="grid-item"><img src="images/gallery_06.png" /></div>
+        </div>
+        <button class="browse">Browse More</button>
+      </div>
+    </div>
+
+    <div id="adopting" class="section">
+      <div class="content">
+        <h2>Adopting 101</h2>
+        <p>
+          <span class="bold">Class is in session!</span> Here’s a basic guide of
+          what you would probably want to have along with you at our adoption
+          center:
+        </p>
+        <ul>
+          <li>
+            <span class="points">An open mind </span>Not all furry creatures are
+            alike!
+          </li>
+          <li>
+            <span class="points">Comfortable shoes </span>You’ll be on your feet
+            all day, trust us!
+          </li>
+          <li>
+            <span class="points">Mobile phone </span>To take pictures of your
+            potential furry companion, of course!
+          </li>
+        </ul>
+        <button>Let's adopt</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="volunteer">
+        <div>
+          <h2>Extra hands?</h2>
+          <p><span class="bold">YES please!</span> Be a volunteer today:</p>
+        </div>
+        <div class="sign-up">
+          <input
+            type="email"
+            name=""
+            id=""
+            placeholder="youremail@address.com"
+          />
+          <button>I want to help</button>
+        </div>
+      </div>
+      <hr />
+      <div class="attributions">
+        <span>&copy 2019 the catastrophe</span>
+        <ul>
+          <li class="footer-links">
+            <a>FAQ<span class="lower">s</span></a>
+          </li>
+          <li class="footer-links"><a>Privacy Policy</a></li>
+          <li class="footer-links"><a>Legal Notices</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      const grids = document.querySelectorAll(".grid-item");
+      const overlayDiv = document.querySelector("#overlay");
+      const overlayImg = document.querySelector("#overlay img");
+      const overlayBtn = document.querySelector("#overlay button");
+      const browseBtn = document.querySelector(".browse");
+
+      const catApi = "https://api.thecatapi.com/v1/images/search?limit=6";
+      const API_KEY = "7a87ad4c-38eb-404c-bcde-1b82aff9bc6a";
+
+      //overlay functionality
+      function activateOverlay(e) {
+        let imgSrc = e.path[0].attributes[0].textContent; //get img src
+        overlayImg.setAttribute("src", imgSrc);
+        overlayDiv.classList.add("display-flex");
+      }
+
+      function closeOverlay() {
+        overlayDiv.classList.remove("display-flex");
+      }
+
+      grids.forEach((grid) => {
+        grid.addEventListener("click", activateOverlay);
+      });
+
+      overlayBtn.addEventListener("click", closeOverlay);
+
+      //cat photos
+      async function fetchCats() {
+        const response = await fetch(catApi, {
+          headers: { "x-api-key": API_KEY },
+        });
+
+        if (!response.ok) {
+          const message = `An error has occured: ${response.status}`;
+          throw new Error(message);
+        }
+
+        const cats = await response.json();
+        grids.forEach((grid, index) => {
+          grid.children[0].setAttribute("src", cats[index].url);
+        });
+      }
+
+      browseBtn.addEventListener("click", fetchCats);
+    </script>
+  </body>
+</html>
