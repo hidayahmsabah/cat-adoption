@@ -1,0 +1,414 @@
+:root{
+    /* nav links */
+    --grey: #c48900;
+    /* 2nd page h2, button */
+    --dark-orange: #f65e44;
+    /* header bg, adopting list, volunteer */
+    --orange: #ffb301;
+    --black: #303030;
+    /* 2nd page info */
+    --dark-grey: #525252; 
+    /* 2nd page h3, hall of meows h2 */
+    --dark-blue: #140e48;
+    /* hall of meows h4, footer navs */
+    --blue: #392ca0;
+    /* hall of meows bg */
+    --light-blue: #bee4ed;
+    --white: #fff;
+    /* button shadow */
+    --darker-orange: #d83c21;
+    /* adopting para */
+    --purple: #bfb7ff;
+
+    --main-font: "Poppins", sans-serif;
+    --secondary-font: "Fjalla One", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-family: var(--main-font);
+    overflow-x: hidden;
+}
+
+.section{
+    height: 100vh; 
+    width: 100vw;
+}
+
+h2{
+    margin: 0;
+}
+
+button, a, li span{
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+
+}
+
+button, a {
+    cursor: pointer;
+
+}
+
+button{
+    font-size: 24px;
+    border: none;
+    background-color: var(--dark-orange);
+    color: var(--white);
+    /* font-weight: 700; */
+    padding: 0.75em 1.25em;
+    border-radius: 0.3em;
+    box-shadow: 0px 3px var(--darker-orange);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+button:hover{
+    color: var(--dark-grey);
+}
+
+button:active{
+    box-shadow: none;
+    transform: translateY(3px);
+}
+
+a{
+    text-decoration: none;
+}
+
+/* header */
+header{
+    background: center / cover no-repeat url(images/bg_header1.jpg);
+}
+
+nav ul{
+    display: flex;   
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li{
+    list-style-type: none;
+    flex-basis: 200px;
+    font-size: 24px;
+}
+
+ul{
+    padding: 0;
+}
+
+li a{
+    color: var(--grey);
+    transition: color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+li a:hover{
+    color: var(--dark-grey);
+
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+h1{
+    font-size: 74px;
+    color: var(--white);
+    width: 80%;
+    font-weight: 700;
+    line-height: 1.2em;
+    /* padding: 1em 0 0; */
+}
+
+.content{
+    margin-left: 20vw;
+    width: 50vw;
+    padding-top: 3em;
+}
+
+/* objectives page */
+#objectives{
+    /* padding: 0 10vw; */
+    height: fit-content;
+}
+
+#objectives h2{
+    color: var(--dark-orange);
+    text-align: center;
+    padding: 20vh 5vh 5vh;
+}
+
+p{
+    width: 50vw;
+    margin: 0 auto;
+}
+
+#objectives p{
+    text-align: center;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+div.section{
+    background-color: var(--white);
+}
+
+.obj-container{
+    display: flex;
+    width: 75vw;
+    justify-content: space-evenly;
+    margin: 3em auto 5em;  
+}
+
+.objectives{
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw / 4);
+    justify-content: center;
+    margin: 0 1em;
+    /* height: 500px; */
+}
+
+.objectives img{
+    flex: 1;
+
+}
+
+.objectives span{
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.objectives p{
+    font-size: 18px;
+    width: 100%;
+    /* margin: 0 1em; */
+    flex: 1;
+}
+
+h2{
+    font-size: 74px;
+    font-weight: 700;
+}
+
+
+
+
+
+/* hall of meows */
+#hall-of-meows{
+    background: center / cover no-repeat url(images/bg_hallofmeows.jpg);
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    gap: 20px;
+}
+
+.grid-item{
+    border: thick solid var(--white);
+    border-radius: 0.2em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover{
+    transform: scale(1.05);
+}
+
+#hall-of-meows button{
+    margin-top: 1em;
+}
+
+#overlay {
+    position: fixed; 
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2;
+}
+
+#overlay.display-flex{
+    display: flex;
+}
+
+#overlay div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#overlay button{
+    font-family: var(--main-font);
+    text-transform: lowercase;
+    background-color: transparent;
+    padding: 0;
+    color: var(--white);
+    box-shadow: none;
+    margin: 0;
+    font-weight: 200;
+    font-size: 32px;
+    height: fit-content;
+}
+
+#overlay img{
+    padding: 0 1em 1em 1em;
+}
+
+/* adopting 101 */
+#adopting{
+    background: center / cover no-repeat url(images/bg_adopting101.jpg);
+    color: var(--white);
+}
+
+#adopting p, #adopting li{
+    color: var(--purple);
+}
+
+#adopting p{
+    font-size: 24px;
+    margin: 0;
+}
+
+#adopting li{
+    font-size: 20px;
+    line-height: 3em;
+}
+
+.points{
+    color: var(--orange);
+    font-size: 24px;
+    padding-right: 1em;
+}
+
+#adopting .content{
+    margin: 0 0 0 27vw;
+    width: 75vw;
+}
+
+#adopting li{
+        list-style-type: '\2713  ';
+}
+
+/* footer */
+footer{
+    background-color: var(--dark-blue);
+    padding: 3em 6em 1em;
+}
+
+footer h2{
+    color: var(--white);
+    font-size: 66px;
+    line-height: 1em;
+    width: fit-content;
+}
+
+input{
+    font-size: 20px;
+    border: none;
+    color: var(--black);
+    padding: 1.1em 4em 1.1em 1.25em;
+    border-radius: 0.3em;
+    outline: none;
+    margin-right: 1em;
+    font-weight: 700;
+}
+
+.volunteer{
+    display: flex;
+    align-items: center;
+    margin: 0 0 2em;
+    justify-content: space-between;
+}
+
+.volunteer div{
+    width: fit-content;
+}
+
+.volunteer p{
+    color: var(--orange);
+    font-size: 24px;
+    width: fit-content;
+    margin: 0;
+}
+
+.attributions{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0 1em;
+}
+
+hr{
+    border: none;
+    border-top: 1px solid var(--blue);
+    margin: 0;
+}
+
+.attributions, .footer-links a{
+    color: var(--blue);
+}
+
+.attributions span{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+footer ul{
+    display: inline-flex;
+    margin: 0;
+    align-items: center;
+    flex-basis: 50%;
+    justify-content: space-between;
+}
+
+/* .volunteer > div{
+    flex-basis: 50%;
+} */
+
+.footer-links{
+    list-style-type: none;
+    font-size: 24px;
+}
+
+.sign-up{
+    flex-basis: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lower{
+    text-transform: lowercase;
+}
+
+
+@media screen and (max-width: 800px){
+    .obj-container{
+        flex-direction: column;
+    }
+
+    .objectives{
+        width: 100%;
+        margin-bottom: 5em;
+    }
+}
+
